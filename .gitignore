@@ -1,2 +1,5 @@
-__pycache__/
+testApp/__pycache__/
 *.pyc
+*.pyo
+*.pyd
+.coverage

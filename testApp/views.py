@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from .models import Item
+from .validators import ProductValidator
+from pydantic import ValidationError
 
 
 # Create your views here.
@@ -8,9 +9,12 @@ from .models import Item
 # Create Item
 def create_item(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
-        price = request.POST.get('price')
-        item = Item.objects.create(name=name, price=price)
+        data = {
+           'name' : request.POST.get('name'), 
+           'price' : request.POST.get('price')
+        } 
+        product = ProductValidator(**data)
+        item = Item.objects.create(**product.dict())
         return JsonResponse({'message': f'Item {item.name} created'}, status=201)
 
 # Read Item
