@@ -1,4 +1,4 @@
 [submodule "submoduleUnitTesting"]
 	path = submoduleUnitTesting
 	url = https://github.com/HenochYanuar/submoduleUnitTesting
-	brach = master
+	branch = master

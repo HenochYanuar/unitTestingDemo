@@ -58,7 +58,6 @@ class testMinusFUnction(TestCase):
   def test_return_negative(self):
      """Menguji pengurangan dengan hasil negatif"""
      self.assertEqual(minus_function(10, 20), -10)
-  
 
 class ItemCrudTest(TestCase):
 
@@ -66,7 +65,10 @@ class ItemCrudTest(TestCase):
         """Mengujikan pembuatan item baru."""
         data = {
            'name': 'Test Item', 
-           'price': 10000
+           'price': 10000,
+           'email': 'contoh@contoh.com',
+           'code': 'abcd1234'
+
         }
         product = ProductValidator(**data)
         response = self.client.post(reverse('create_item'), product.dict())

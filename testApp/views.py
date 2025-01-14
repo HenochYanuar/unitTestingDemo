@@ -10,8 +10,10 @@ from pydantic import ValidationError
 def create_item(request):
     if request.method == 'POST':
         data = {
-           'name' : request.POST.get('name'), 
-           'price' : request.POST.get('price')
+            'name' : request.POST.get('name'), 
+            'price' : request.POST.get('price'),
+            'email' : request.POST.get('email'),
+            'code' : request.POST.get('code')
         } 
         product = ProductValidator(**data)
         item = Item.objects.create(**product.dict())
